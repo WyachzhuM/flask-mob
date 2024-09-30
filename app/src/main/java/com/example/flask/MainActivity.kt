@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.Main) {
                 try {
                     withContext(Dispatchers.IO) {
-                        service.createUser(UserData(login, pass))
+                        service.createUser(UserData(login, pass, "БАШУиеавч.png"))
                     }
 
                     binding.loginEditText.text.clear()

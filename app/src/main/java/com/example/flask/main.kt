@@ -1,6 +1,7 @@
 package com.example.flask
 
 import android.service.autofill.UserData
+import com.google.gson.annotations.SerializedName
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -8,7 +9,10 @@ import retrofit2.http.POST
 
 data class UserData(
     val login: String,
-    val pass: String
+    @SerializedName("password")
+    val pass: String,
+    @SerializedName("image_url")
+    val imageURL: String
 )
 
 interface UserService {
