@@ -17,29 +17,14 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
 
         val adapter = UsersListAdapter(emptyList())
         binding.recyclerView.adapter = adapter
 
-        GlobalScope.launch(Dispatchers.Main){
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.3.214:5000")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val service = retrofit.create(UserService::class.java)
-
-            val usersData = withContext(Dispatchers.IO){
-                return@withContext service.getUsers()
-            }
-
-            adapter.update(usersData)
-        }
+        val listViewModel = (application as UsersApp).listViewModel
+        listViewModel.showUsers(adapter)
 
         binding.buttonToMain.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))

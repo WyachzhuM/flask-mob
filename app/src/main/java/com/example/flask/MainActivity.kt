@@ -22,34 +22,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val mainViewModel = (application as UsersApp).mainViewModel
+
         binding.buttonToList.setOnClickListener {
-            val login = binding.loginEditText.text.toString()
-            val pass = binding.passwordEditText.text.toString()
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.3.214:5000")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val service = retrofit.create(UserService::class.java)
-
-
-            GlobalScope.launch(Dispatchers.Main) {
-                try {
-                    withContext(Dispatchers.IO) {
-                        service.createUser(UserData(login, pass, "БАШУиеавч.png"))
-                    }
-
-                    binding.loginEditText.text.clear()
-                    binding.passwordEditText.text.clear()
-                } catch (e: Exception) {
-                    Toast.makeText(
-                        this@MainActivity, "login must be unique",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-
+            mainViewModel.createUser(binding)
             startActivity(Intent(this, ListActivity::class.java))
         }
     }
