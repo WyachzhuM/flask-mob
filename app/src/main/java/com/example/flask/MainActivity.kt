@@ -1,5 +1,6 @@
 package com.example.flask
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,16 +22,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.buttonToList.setOnClickListener {
             val login = binding.loginEditText.text.toString()
             val pass = binding.passwordEditText.text.toString()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.2.182:5000")
+                .baseUrl("http://192.168.3.153:5000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
             val service = retrofit.create(UserService::class.java)
+
 
             GlobalScope.launch(Dispatchers.Main) {
                 try {
@@ -47,6 +49,8 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+
+            startActivity(Intent(this, ListActivity::class.java))
         }
     }
 }
