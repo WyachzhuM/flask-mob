@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             val pass = binding.passwordEditText.text.toString()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.3.153:5000")
+                .baseUrl("http://192.168.3.214:5000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

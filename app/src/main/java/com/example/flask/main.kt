@@ -1,6 +1,6 @@
 package com.example.flask
 
-import android.service.autofill.UserData
+
 import com.google.gson.annotations.SerializedName
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,7 +17,7 @@ data class UserData(
 
 interface UserService {
     @POST("/user/create/mob")
-    suspend fun createUser(@Body userData: com.example.flask.UserData)
+    suspend fun createUser(@Body userData: UserData)
 
     @GET("/user/all")
     suspend fun getUsers() : List<UserData>

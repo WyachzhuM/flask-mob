@@ -28,7 +28,7 @@ class ListActivity : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.Main){
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.3.153:5000")
+                .baseUrl("http://192.168.3.214:5000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -45,7 +45,4 @@ class ListActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
-
-
-
 }

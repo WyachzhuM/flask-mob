@@ -22,7 +22,7 @@ class UsersListAdapter(
 
     override fun getItemCount() = list.size
 
-    fun update(newList: List<android.service.autofill.UserData>){
+    fun update(newList: List<UserData>){
         list = newList
         notifyDataSetChanged()
     }
