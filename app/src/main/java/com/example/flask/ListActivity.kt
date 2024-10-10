@@ -19,8 +19,8 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityListBinding.inflate(layoutInflater)
-
-        val adapter = UsersListAdapter(emptyList())
+        val baseUrl: String = (application as UsersApp).baseUrl
+        val adapter = UsersListAdapter(baseUrl, emptyList())
         binding.recyclerView.adapter = adapter
 
         val listViewModel = (application as UsersApp).listViewModel
