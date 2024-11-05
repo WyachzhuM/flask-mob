@@ -17,8 +17,8 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
         binding = ActivityListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val baseUrl: String = (application as UsersApp).baseUrl
         val adapter = UsersListAdapter(baseUrl, emptyList())
         binding.recyclerView.adapter = adapter

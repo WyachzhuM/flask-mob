@@ -16,7 +16,7 @@ class Repository(
 
     suspend fun createUser(login: String, password: String){
         withContext(dispatcher){
-            service.createUser(UserData(login, password, "БАШУиеавч.png"))
+            service.createUser(UserData(login, password, "БАШУиеав.png"))
         }
     }
 }
